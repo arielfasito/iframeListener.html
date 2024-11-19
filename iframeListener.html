@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iframe Listener</title>
+</head>
+<body>
+  <button id="gotItButton" style="display:none;">Lo tengo</button>
+
+  <script>
+    let audioUrl;
+
+    window.addEventListener("message", (event) => {
+      audioUrl = event.data;
+      document.getElementById("gotItButton").style.display = "block";
+    });
+
+    document.getElementById("gotItButton").addEventListener("click", () => {
+      function sendReturnMessage(msg) {
+        window.parent.postMessage(msg, "https://paezariel797.wixstudio.io/8989");
+      }
+      sendReturnMessage(audioUrl);
+    });
+  </script>
+</body>
+</html>
